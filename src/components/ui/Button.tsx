@@ -4,10 +4,11 @@ import { cn } from "@/lib/utils/cn";
 type ButtonVariant = "primary" | "secondary" | "outline" | "ghost";
 type ButtonSize = "sm" | "md" | "lg";
 
-interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
+export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   variant?: ButtonVariant;
   size?: ButtonSize;
   icon?: ReactNode;
+  isLoading?: boolean;
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
@@ -28,25 +29,37 @@ export function Button({
   variant = "primary",
   size = "md",
   icon,
+  isLoading = false,
   className,
   type = "button",
   children,
   ...props
 }: ButtonProps) {
+  const spinner = (
+    <span
+      className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent"
+      aria-hidden="true"
+    />
+  );
+
   return (
     <button
       type={type}
       className={cn(
-        "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-300 ease-out cursor-pointer disabled:cursor-not-allowed",
+        "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-300 ease-out",
+        isLoading ? "cursor-wait" : "cursor-pointer",
+        "disabled:cursor-not-allowed",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2 focus-visible:ring-offset-beige-50",
         variantClasses[variant],
         sizeClasses[size],
         className
       )}
+      aria-busy={isLoading}
+      disabled={isLoading || props.disabled}
       {...props}
     >
-      {icon}
-      {children}
+      {isLoading ? spinner : icon}
+      <span className={cn(isLoading ? "opacity-90" : "", "inline-flex items-center")}>{children}</span>
     </button>
   );
 }

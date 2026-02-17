@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { ActionForm } from "@/components/features/ActionForm";
+import { ActionForm, FormSubmitButton } from "@/components/features/ActionForm";
 import { Input } from "@/components/ui/Input";
-import { Button } from "@/components/ui/Button";
 import { signIn } from "@/app/(auth)/actions";
 
 export default function LoginPage() {
@@ -14,7 +13,9 @@ export default function LoginPage() {
       <ActionForm action={signIn}>
         <Input label="Email" name="email" type="email" autoComplete="email" required />
         <Input label="Password" name="password" type="password" autoComplete="current-password" required />
-        <Button type="submit">Sign in</Button>
+        <FormSubmitButton type="submit" pendingText="Signing in...">
+          Sign in
+        </FormSubmitButton>
       </ActionForm>
       <p className="text-sm text-ink-600">
         New to Fresha Studio?{" "}

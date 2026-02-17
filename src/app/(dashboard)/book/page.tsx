@@ -1,6 +1,5 @@
 import { Card } from "@/components/ui/Card";
-import { Button } from "@/components/ui/Button";
-import { ActionForm } from "@/components/features/ActionForm";
+import { ActionForm, FormSubmitButton } from "@/components/features/ActionForm";
 import { BookingFilters } from "@/components/features/BookingFilters";
 import { BookingList, type BookingListItem } from "@/components/features/BookingList";
 import { requireRole } from "@/lib/services/authService";
@@ -54,7 +53,7 @@ export default async function BookPage({ searchParams }: BookPageProps) {
         <ActionForm action={payBookingAction} className="flex items-center">
           <input type="hidden" name="bookingId" value={booking.id} />
           <input type="hidden" name="amount" value={String(servicePriceMap.get(booking.serviceId) ?? 0)} />
-          <Button
+          <FormSubmitButton
             type="submit"
             size="sm"
             variant="primary"
@@ -64,9 +63,10 @@ export default async function BookPage({ searchParams }: BookPageProps) {
                 : "bg-rose-600 text-white hover:bg-rose-700"
             }`}
             disabled={booking.paymentStatus === "PAID"}
+            pendingText="Processing..."
           >
             {booking.paymentStatus === "PAID" ? "Paid" : "Pay now"}
-          </Button>
+          </FormSubmitButton>
         </ActionForm>
       </>
     )
@@ -111,7 +111,7 @@ export default async function BookPage({ searchParams }: BookPageProps) {
               <input type="hidden" name="staffId" value={staffId} />
               <input type="hidden" name="date" value={date} />
               {slots.map((slot) => (
-                <Button
+                <FormSubmitButton
                   key={`${slot.startTime}-${slot.endTime}`}
                   type="submit"
                   name="startTime"
@@ -123,9 +123,10 @@ export default async function BookPage({ searchParams }: BookPageProps) {
                       : "border-charcoal-100 text-charcoal-500"
                   }
                   disabled={!slot.available}
+                  pendingText="Booking..."
                 >
                   {formatTime(slot.startTime)}
-                </Button>
+                </FormSubmitButton>
               ))}
             </ActionForm>
           )}

@@ -1,7 +1,6 @@
 import { Card } from "@/components/ui/Card";
 import { StatCard } from "@/components/ui/StatCard";
-import { ActionForm } from "@/components/features/ActionForm";
-import { Button } from "@/components/ui/Button";
+import { ActionForm, FormSubmitButton } from "@/components/features/ActionForm";
 import { Input } from "@/components/ui/Input";
 import { Badge } from "@/components/ui/Badge";
 import { BookingList, type BookingListItem } from "@/components/features/BookingList";
@@ -129,16 +128,16 @@ export default async function AdminPage() {
                     required
                   />
                   <div className="flex gap-2">
-                    <Button type="submit" size="sm">
+                    <FormSubmitButton type="submit" size="sm" pendingText="Saving...">
                       Save
-                    </Button>
+                    </FormSubmitButton>
                   </div>
                 </ActionForm>
                 <form action={deleteServiceAction} className="flex justify-end">
                   <input type="hidden" name="id" value={service.id} />
-                  <Button type="submit" variant="ghost" size="sm">
+                  <FormSubmitButton type="submit" variant="ghost" size="sm" pendingText="Removing...">
                     Remove service
-                  </Button>
+                  </FormSubmitButton>
                 </form>
               </Card>
             ))}
@@ -151,7 +150,9 @@ export default async function AdminPage() {
             <Input name="name" label="Service name" required />
             <Input name="durationMinutes" label="Duration (min)" type="number" min={15} max={240} required />
             <Input name="price" label="Price" type="number" min={1} max={500} step="0.01" required />
-            <Button type="submit">Create service</Button>
+            <FormSubmitButton type="submit" pendingText="Creating...">
+              Create service
+            </FormSubmitButton>
           </ActionForm>
         </Card>
       </section>
@@ -181,16 +182,16 @@ export default async function AdminPage() {
                   <Input name="workStartTime" label="Start" type="time" defaultValue={member.workStartTime} required />
                   <Input name="workEndTime" label="End" type="time" defaultValue={member.workEndTime} required />
                   <div className="flex gap-2">
-                    <Button type="submit" size="sm">
+                    <FormSubmitButton type="submit" size="sm" pendingText="Saving...">
                       Save
-                    </Button>
+                    </FormSubmitButton>
                   </div>
                 </ActionForm>
                 <form action={deleteStaffAction} className="flex justify-end">
                   <input type="hidden" name="id" value={member.id} />
-                  <Button type="submit" variant="ghost" size="sm">
+                  <FormSubmitButton type="submit" variant="ghost" size="sm" pendingText="Removing...">
                     Remove staff
-                  </Button>
+                  </FormSubmitButton>
                 </form>
               </Card>
             ))}
@@ -204,7 +205,9 @@ export default async function AdminPage() {
             <Input name="expertise" label="Expertise" required />
             <Input name="workStartTime" label="Work start" type="time" required />
             <Input name="workEndTime" label="Work end" type="time" required />
-            <Button type="submit">Add staff</Button>
+            <FormSubmitButton type="submit" pendingText="Adding...">
+              Add staff
+            </FormSubmitButton>
           </ActionForm>
         </Card>
       </section>

@@ -2,7 +2,9 @@
 
 import type { ReactNode } from "react";
 import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import { cn } from "@/lib/utils/cn";
+import { Button, type ButtonProps } from "@/components/ui/Button";
 
 export interface ActionState {
   status: "idle" | "success" | "error";
@@ -35,5 +37,18 @@ export function ActionForm({ action, children, successMessage, className }: Acti
         </span>
       ) : null}
     </form>
+  );
+}
+
+interface FormSubmitButtonProps extends ButtonProps {
+  pendingText?: string;
+}
+
+export function FormSubmitButton({ pendingText, children, ...props }: FormSubmitButtonProps) {
+  const { pending } = useFormStatus();
+  return (
+    <Button isLoading={pending} {...props}>
+      {pending ? pendingText ?? children : children}
+    </Button>
   );
 }

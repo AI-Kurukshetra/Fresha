@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { ActionForm } from "@/components/features/ActionForm";
+import { ActionForm, FormSubmitButton } from "@/components/features/ActionForm";
 import { Input } from "@/components/ui/Input";
-import { Button } from "@/components/ui/Button";
 import { signUp } from "@/app/(auth)/actions";
 
 export default function SignupPage() {
@@ -15,7 +14,9 @@ export default function SignupPage() {
         <Input label="Full name" name="name" type="text" autoComplete="name" required />
         <Input label="Email" name="email" type="email" autoComplete="email" required />
         <Input label="Password" name="password" type="password" autoComplete="new-password" required />
-        <Button type="submit">Create account</Button>
+        <FormSubmitButton type="submit" pendingText="Creating...">
+          Create account
+        </FormSubmitButton>
       </ActionForm>
       <p className="text-sm text-ink-600">
         Already have an account?{" "}

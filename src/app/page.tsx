@@ -67,27 +67,27 @@ export default async function HomePage() {
           </div>
           <div className="space-y-6">
             <Card className="border-none bg-transparent p-0 shadow-none">
-              <div className="space-y-5 rounded-3xl border border-charcoal-100 bg-gradient-to-br from-charcoal-900 via-charcoal-700 to-charcoal-900 p-6 text-white shadow-card">
+              <div className="space-y-5 rounded-3xl border border-charcoal-100 bg-gradient-to-br from-charcoal-900 via-charcoal-900 to-black p-6 text-white shadow-card">
                 <div className="flex items-center justify-between">
-                  <p className="text-xs uppercase tracking-[0.3em] text-beige-100">Studio flow</p>
+                  <p className="text-xs uppercase tracking-[0.3em] text-white/80">Studio flow</p>
                   <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold text-white">
                     Live now
                   </span>
                 </div>
-                <h2 className="font-display text-3xl">Live availability, polished experience</h2>
-                <p className="text-sm text-beige-100">
+                <h2 className="font-display text-3xl text-white">Live availability, polished experience</h2>
+                <p className="text-sm text-white/90">
                   Clients book in seconds, teams stay aligned, and every appointment flows seamlessly.
                 </p>
                 <div className="grid gap-3">
                   {["Instant confirmations", "Smart staff matching", "Payments tracked"].map((item) => (
-                    <div key={item} className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm">
+                    <div key={item} className="rounded-xl border border-white/15 bg-white/15 px-4 py-3 text-sm text-white">
                       {item}
                     </div>
                   ))}
                 </div>
-                <div className="rounded-2xl bg-white/10 px-4 py-4 text-sm text-beige-100">
+                <div className="rounded-2xl bg-white/20 px-4 py-4 text-sm text-white">
                   <div className="flex items-center justify-between">
-                    <span className="uppercase tracking-[0.2em] text-[11px] text-beige-100">Next open slot</span>
+                    <span className="uppercase tracking-[0.2em] text-[11px] text-white/85">Next open slot</span>
                     <span className="font-semibold text-white">Today · 2:30 PM</span>
                   </div>
                 </div>
@@ -153,27 +153,52 @@ export default async function HomePage() {
         </section>
 
         <section className="grid gap-6 py-10 md:grid-cols-[0.9fr_1.1fr]">
-          <Card className="space-y-4 border border-charcoal-100 bg-white/85">
-            <h2 className="font-display text-2xl text-ink-900">Loved by clients</h2>
-            <p className="text-sm text-ink-600">
-              "The booking experience is so smooth, and I always get a reminder. Highly recommend."
-            </p>
-            <div className="text-sm text-ink-600">- Priya S., regular client</div>
-            <p className="text-sm text-ink-600">
-              "I manage my team schedule without spreadsheets, and clients can book 24/7."
-            </p>
-            <div className="text-sm text-ink-600">- Luis M., salon owner</div>
-          </Card>
-          <Card className="space-y-4 border border-charcoal-100 bg-gradient-to-br from-charcoal-900 via-charcoal-700 to-charcoal-900 text-white">
-            <h3 className="font-display text-2xl text-white">Get the app</h3>
-            <p className="text-sm text-beige-100">
-              Manage your bookings and reschedule on the go. Available on iOS and Android.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Button variant="secondary">App Store</Button>
-              <Button variant="outline">Google Play</Button>
-            </div>
-          </Card>
+          <div className="grid gap-6 md:grid-cols-2">
+            <Card className="space-y-4 border border-charcoal-100 bg-white/85">
+              <h2 className="font-display text-2xl text-ink-900">Loved by clients</h2>
+              <p className="text-sm text-ink-600">
+                "The booking experience is so smooth, and I always get a reminder. Highly recommend."
+              </p>
+              <div className="text-sm text-ink-600">- Priya S., regular client</div>
+              <p className="text-sm text-ink-600">
+                "I manage my team schedule without spreadsheets, and clients can book 24/7."
+              </p>
+              <div className="text-sm text-ink-600">- Luis M., salon owner</div>
+            </Card>
+            <Card className="space-y-4 border border-charcoal-100 bg-white/85">
+              <h2 className="font-display text-2xl text-ink-900">Why they return</h2>
+              <p className="text-sm text-ink-600">
+                "I can see my specialist’s availability instantly and get in without waiting on a call."
+              </p>
+              <div className="text-sm text-ink-600">- Maya T., spa guest</div>
+              <p className="text-sm text-ink-600">
+                "Payments are easy, reminders are timely, and rescheduling takes seconds."
+              </p>
+              <div className="text-sm text-ink-600">- Omar K., member</div>
+            </Card>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            <Card className="space-y-4 border border-charcoal-100 bg-gradient-to-br from-rose-100 via-white to-beige-50 text-charcoal-900">
+              <h3 className="font-display text-2xl text-charcoal-900">Get the app</h3>
+              <p className="text-sm text-charcoal-600">
+                Manage your bookings and reschedule on the go. Available on iOS and Android.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Button variant="primary">App Store</Button>
+                <Button variant="outline">Google Play</Button>
+              </div>
+            </Card>
+            <Card className="space-y-4 border border-charcoal-100 bg-gradient-to-br from-rose-600 via-rose-600 to-rose-700 text-white">
+              <h3 className="font-display text-2xl text-white">Invite your clients</h3>
+              <p className="text-sm text-white/90">
+                Share your booking page and let clients reserve instantly. No phone calls required.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Button variant="secondary">Copy booking link</Button>
+                <Button variant="outline">Share via email</Button>
+              </div>
+            </Card>
+          </div>
         </section>
 
         <section id="team" className="space-y-6 py-10">

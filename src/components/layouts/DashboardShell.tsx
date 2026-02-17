@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { CalendarCheck2, ClipboardList, LayoutDashboard, Scissors, UserRound } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { FormSubmitButton } from "@/components/features/ActionForm";
 import type { UserContext } from "@/infrastructure/auth/getUser";
 import { signOut } from "@/app/(auth)/actions";
 
@@ -57,9 +57,9 @@ export function DashboardShell({ user, children }: DashboardShellProps) {
               Signed in as <span className="font-semibold text-charcoal-900">{user.name}</span>
             </div>
             <form action={signOut}>
-              <Button variant="outline" size="sm" type="submit" className="w-full">
+              <FormSubmitButton variant="outline" size="sm" type="submit" className="w-full" pendingText="Signing out...">
                 Sign out
-              </Button>
+              </FormSubmitButton>
             </form>
           </div>
         </aside>
@@ -69,9 +69,9 @@ export function DashboardShell({ user, children }: DashboardShellProps) {
               Fresha Studio
             </Link>
             <form action={signOut}>
-              <Button variant="outline" size="sm" type="submit">
+              <FormSubmitButton variant="outline" size="sm" type="submit" pendingText="Signing out...">
                 Sign out
-              </Button>
+              </FormSubmitButton>
             </form>
           </header>
           {children}

@@ -119,6 +119,7 @@ export function BookingFilters({
           className="min-w-[180px]"
           onClick={applyFilters}
           disabled={isPending}
+          isLoading={isPending}
         >
           {isPending ? "Refreshing..." : "Refresh slots"}
         </Button>

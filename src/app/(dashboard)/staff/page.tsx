@@ -1,7 +1,6 @@
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
-import { ActionForm } from "@/components/features/ActionForm";
+import { ActionForm, FormSubmitButton } from "@/components/features/ActionForm";
 import { BookingList, type BookingListItem } from "@/components/features/BookingList";
 import { requireRole } from "@/lib/services/authService";
 import { staffRepository } from "@/lib/repositories/staffRepository";
@@ -38,9 +37,9 @@ export default async function StaffPage() {
         {booking.status !== "COMPLETED" ? (
           <ActionForm action={completeBookingAction} className="flex">
             <input type="hidden" name="bookingId" value={booking.id} />
-            <Button type="submit" size="sm" variant="secondary">
+            <FormSubmitButton type="submit" size="sm" variant="secondary" pendingText="Completing...">
               Mark complete
-            </Button>
+            </FormSubmitButton>
           </ActionForm>
         ) : null}
       </>
