@@ -26,8 +26,6 @@ interface BookingListProps {
 const statusOptions: BookingStatus[] = ["PENDING", "CONFIRMED", "COMPLETED", "CANCELLED"];
 const paymentOptions: PaymentStatus[] = ["UNPAID", "PAID", "FAILED"];
 
-const normalizeText = (value: string): string => value.toLowerCase().trim();
-
 export function BookingList({ title, items, emptyMessage, className }: BookingListProps) {
   const [statusFilter, setStatusFilter] = useState<BookingStatus | "ALL">("ALL");
   const [paymentFilter, setPaymentFilter] = useState<PaymentStatus | "ALL">("ALL");
@@ -69,11 +67,11 @@ export function BookingList({ title, items, emptyMessage, className }: BookingLi
         </span>
       </div>
 
-      <div className="grid gap-3 rounded-2xl border border-ink-100 bg-white/70 p-4 md:grid-cols-[0.9fr_0.9fr_0.9fr_0.9fr_0.8fr]">
+      <div className="grid gap-3 rounded-2xl border border-charcoal-100 bg-white/80 p-4 shadow-soft md:grid-cols-[0.9fr_0.9fr_0.9fr_0.9fr_0.8fr]">
         <div className="flex flex-col gap-2">
-          <label className="text-xs font-semibold text-ink-700">Status</label>
+          <label className="text-xs font-semibold text-charcoal-700">Status</label>
           <select
-            className="rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm text-ink-900 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-100"
+            className="rounded-xl border border-charcoal-100 bg-white/80 px-3 py-2 text-sm text-charcoal-900 focus:border-rose-600 focus:outline-none focus:ring-2 focus:ring-rose-100"
             value={statusFilter}
             onChange={(event) => setStatusFilter(event.target.value as BookingStatus | "ALL")}
           >
@@ -87,9 +85,9 @@ export function BookingList({ title, items, emptyMessage, className }: BookingLi
         </div>
         {hasPayment ? (
           <div className="flex flex-col gap-2">
-            <label className="text-xs font-semibold text-ink-700">Payment</label>
+            <label className="text-xs font-semibold text-charcoal-700">Payment</label>
             <select
-              className="rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm text-ink-900 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-100"
+              className="rounded-xl border border-charcoal-100 bg-white/80 px-3 py-2 text-sm text-charcoal-900 focus:border-rose-600 focus:outline-none focus:ring-2 focus:ring-rose-100"
               value={paymentFilter}
               onChange={(event) => setPaymentFilter(event.target.value as PaymentStatus | "ALL")}
             >
@@ -103,18 +101,18 @@ export function BookingList({ title, items, emptyMessage, className }: BookingLi
           </div>
         ) : null}
         <div className="flex flex-col gap-2">
-          <label className="text-xs font-semibold text-ink-700">From</label>
+          <label className="text-xs font-semibold text-charcoal-700">From</label>
           <input
-            className="rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm text-ink-900 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-100"
+            className="rounded-xl border border-charcoal-100 bg-white/80 px-3 py-2 text-sm text-charcoal-900 focus:border-rose-600 focus:outline-none focus:ring-2 focus:ring-rose-100"
             type="date"
             value={fromDate}
             onChange={(event) => setFromDate(event.target.value)}
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label className="text-xs font-semibold text-ink-700">To</label>
+          <label className="text-xs font-semibold text-charcoal-700">To</label>
           <input
-            className="rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm text-ink-900 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-100"
+            className="rounded-xl border border-charcoal-100 bg-white/80 px-3 py-2 text-sm text-charcoal-900 focus:border-rose-600 focus:outline-none focus:ring-2 focus:ring-rose-100"
             type="date"
             value={toDate}
             onChange={(event) => setToDate(event.target.value)}
@@ -124,14 +122,14 @@ export function BookingList({ title, items, emptyMessage, className }: BookingLi
           <button
             type="button"
             onClick={clearFilters}
-            className="inline-flex h-10 w-full items-center justify-center rounded-xl border border-ink-200 bg-white text-sm font-semibold text-ink-900 transition hover:border-ink-600"
+            className="inline-flex h-10 w-full items-center justify-center rounded-xl border border-charcoal-100 bg-white/80 text-sm font-semibold text-charcoal-900 transition-all duration-300 hover:border-rose-600 hover:text-rose-700"
           >
             Clear filters
           </button>
         </div>
       </div>
 
-      <div className="space-y-3 rounded-2xl border border-ink-100 bg-white p-4">
+      <div className="space-y-3 rounded-2xl border border-charcoal-100 bg-white/90 p-4 shadow-soft">
         {filteredItems.length === 0 ? (
           <p className="text-sm text-ink-600">{emptyMessage}</p>
         ) : (

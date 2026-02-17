@@ -66,7 +66,7 @@ export default async function AdminPage() {
           </div>
         </div>
         <Card className="p-6">
-          <div className="flex h-full min-h-[220px] flex-col justify-between rounded-2xl border border-ink-100 bg-gradient-to-br from-emerald-50 via-white to-transparent p-6">
+          <div className="flex h-full min-h-[220px] flex-col justify-between rounded-2xl border border-charcoal-100 bg-gradient-to-br from-beige-50 via-white to-transparent p-6">
             <div className="space-y-2">
               <p className="text-xs uppercase tracking-[0.2em] text-ink-500">Today</p>
               <h3 className="font-display text-2xl text-ink-900">Studio pulse</h3>

@@ -42,7 +42,12 @@ export const updateService = async (id: string, input: unknown): Promise<Result<
   }
 
   try {
-    const service = await serviceRepository.update(toServiceId(id), parsed.data);
+    const updateData: Partial<Omit<Service, "id">> = {
+      ...(parsed.data.name !== undefined ? { name: parsed.data.name } : {}),
+      ...(parsed.data.durationMinutes !== undefined ? { durationMinutes: parsed.data.durationMinutes } : {}),
+      ...(parsed.data.price !== undefined ? { price: parsed.data.price } : {})
+    };
+    const service = await serviceRepository.update(toServiceId(id), updateData);
     return { success: true, data: service };
   } catch (error) {
     logger.error({ error }, "Update service failed");
@@ -82,7 +87,13 @@ export const updateStaff = async (id: string, input: unknown): Promise<Result<St
   }
 
   try {
-    const staff = await staffRepository.update(toStaffId(id), parsed.data);
+    const updateData: Partial<Omit<Staff, "id">> = {
+      ...(parsed.data.name !== undefined ? { name: parsed.data.name } : {}),
+      ...(parsed.data.expertise !== undefined ? { expertise: parsed.data.expertise } : {}),
+      ...(parsed.data.workStartTime !== undefined ? { workStartTime: parsed.data.workStartTime } : {}),
+      ...(parsed.data.workEndTime !== undefined ? { workEndTime: parsed.data.workEndTime } : {})
+    };
+    const staff = await staffRepository.update(toStaffId(id), updateData);
     return { success: true, data: staff };
   } catch (error) {
     logger.error({ error }, "Update staff failed");

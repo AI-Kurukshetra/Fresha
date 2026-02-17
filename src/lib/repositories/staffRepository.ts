@@ -19,7 +19,7 @@ const mapStaff = (row: StaffRow): Staff => ({
   expertise: row.expertise,
   workStartTime: row.work_start_time,
   workEndTime: row.work_end_time,
-  userId: row.user_id ? toUserId(row.user_id) : undefined
+  ...(row.user_id ? { userId: toUserId(row.user_id) } : {})
 });
 
 export const staffRepository = {

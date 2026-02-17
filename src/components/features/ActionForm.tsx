@@ -27,10 +27,10 @@ export function ActionForm({ action, children, successMessage, className }: Acti
     <form action={formAction} className={cn("flex flex-col gap-4", className)}>
       {children}
       {state.status === "error" ? (
-        <span className="rounded-2xl bg-rose-100 px-4 py-3 text-sm text-rose-700">{state.message}</span>
+        <span className="rounded-2xl bg-error/10 px-4 py-3 text-sm text-error">{state.message}</span>
       ) : null}
       {state.status === "success" ? (
-        <span className="rounded-2xl bg-sand-100 px-4 py-3 text-sm text-ink-700">
+        <span className="rounded-2xl bg-success/15 px-4 py-3 text-sm text-charcoal-700">
           {state.message ?? successMessage}
         </span>
       ) : null}

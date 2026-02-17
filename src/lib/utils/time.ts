@@ -1,7 +1,12 @@
 import { MINUTES_PER_HOUR } from "@/config/constants";
 
 export const parseTimeToMinutes = (time: string): number => {
-  const [hours, minutes] = time.split(":").map((value) => Number(value));
+  const parts = time.split(":");
+  if (parts.length < 2) {
+    throw new Error("Invalid time format");
+  }
+  const hours = Number(parts[0]);
+  const minutes = Number(parts[1]);
   if (Number.isNaN(hours) || Number.isNaN(minutes)) {
     throw new Error("Invalid time format");
   }

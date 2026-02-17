@@ -1,13 +1,12 @@
 import Link from "next/link";
 import { ActionForm } from "@/components/features/ActionForm";
-import { Card } from "@/components/ui/Card";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { signIn } from "@/app/(auth)/actions";
 
 export default function LoginPage() {
   return (
-    <Card className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6">
       <div className="space-y-2">
         <h1 className="font-display text-3xl text-ink-900">Welcome back</h1>
         <p className="text-sm text-ink-600">Sign in to manage bookings and schedules.</p>
@@ -19,10 +18,10 @@ export default function LoginPage() {
       </ActionForm>
       <p className="text-sm text-ink-600">
         New to Fresha Studio?{" "}
-        <Link href="/signup" className="font-semibold text-mint-700">
+        <Link href="/signup" className="font-semibold text-rose-700">
           Create an account
         </Link>
       </p>
-    </Card>
+    </div>
   );
 }

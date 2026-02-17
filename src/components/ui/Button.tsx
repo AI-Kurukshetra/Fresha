@@ -11,10 +11,11 @@ interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: "bg-emerald-600 text-white hover:bg-emerald-700",
-  secondary: "bg-ink-900 text-white hover:bg-ink-800",
-  outline: "border border-ink-200 text-ink-900 hover:border-ink-600",
-  ghost: "text-ink-700 hover:bg-ink-100"
+  primary:
+    "bg-gradient-to-r from-rose-600 to-rose-700 text-white shadow-soft hover:from-rose-700 hover:to-rose-700",
+  secondary: "bg-charcoal-900 text-white hover:bg-charcoal-700",
+  outline: "border border-charcoal-100 text-charcoal-900 hover:border-rose-600 hover:text-rose-700",
+  ghost: "text-charcoal-700 hover:bg-beige-100"
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -36,8 +37,8 @@ export function Button({
     <button
       type={type}
       className={cn(
-        "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition cursor-pointer disabled:cursor-not-allowed",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500",
+        "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-300 ease-out cursor-pointer disabled:cursor-not-allowed",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2 focus-visible:ring-offset-beige-50",
         variantClasses[variant],
         sizeClasses[size],
         className

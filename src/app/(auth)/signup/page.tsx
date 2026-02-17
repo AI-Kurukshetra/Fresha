@@ -1,13 +1,12 @@
 import Link from "next/link";
 import { ActionForm } from "@/components/features/ActionForm";
-import { Card } from "@/components/ui/Card";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { signUp } from "@/app/(auth)/actions";
 
 export default function SignupPage() {
   return (
-    <Card className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6">
       <div className="space-y-2">
         <h1 className="font-display text-3xl text-ink-900">Create your account</h1>
         <p className="text-sm text-ink-600">Book appointments and track your visits.</p>
@@ -20,10 +19,10 @@ export default function SignupPage() {
       </ActionForm>
       <p className="text-sm text-ink-600">
         Already have an account?{" "}
-        <Link href="/login" className="font-semibold text-mint-700">
+        <Link href="/login" className="font-semibold text-rose-700">
           Sign in
         </Link>
       </p>
-    </Card>
+    </div>
   );
 }

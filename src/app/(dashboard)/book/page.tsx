@@ -48,10 +48,10 @@ export default async function BookPage({ searchParams }: BookPageProps) {
     searchable: `${serviceNameMap.get(booking.serviceId) ?? ""} ${booking.status} ${booking.paymentStatus} ${booking.date}`,
     rightSlot: (
       <>
-        <span className="rounded-full bg-ink-100 px-3 py-1 text-xs font-semibold text-ink-700">
+        <span className="rounded-full bg-beige-100 px-3 py-1 text-xs font-semibold text-charcoal-700">
           {booking.paymentStatus}
         </span>
-        <form action={payBookingAction} className="flex items-center">
+        <ActionForm action={payBookingAction} className="flex items-center">
           <input type="hidden" name="bookingId" value={booking.id} />
           <input type="hidden" name="amount" value={String(servicePriceMap.get(booking.serviceId) ?? 0)} />
           <Button
@@ -60,14 +60,14 @@ export default async function BookPage({ searchParams }: BookPageProps) {
             variant="primary"
             className={`min-w-[120px] whitespace-nowrap ${
               booking.paymentStatus === "PAID"
-                ? "bg-slate-200 text-slate-600 hover:bg-slate-200"
-                : "bg-emerald-600 text-white hover:bg-emerald-700"
+                ? "bg-beige-100 text-charcoal-600 hover:bg-beige-100"
+                : "bg-rose-600 text-white hover:bg-rose-700"
             }`}
             disabled={booking.paymentStatus === "PAID"}
           >
             {booking.paymentStatus === "PAID" ? "Paid" : "Pay now"}
           </Button>
-        </form>
+        </ActionForm>
       </>
     )
   }));
@@ -119,8 +119,8 @@ export default async function BookPage({ searchParams }: BookPageProps) {
                   variant={slot.available ? "primary" : "outline"}
                   className={
                     slot.available
-                      ? "bg-emerald-600 text-white hover:bg-emerald-700"
-                      : "border-slate-300 text-slate-400"
+                      ? "bg-rose-600 text-white hover:bg-rose-700 shadow-soft"
+                      : "border-charcoal-100 text-charcoal-500"
                   }
                   disabled={!slot.available}
                 >

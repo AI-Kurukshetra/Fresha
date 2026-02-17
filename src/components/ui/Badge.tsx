@@ -7,13 +7,15 @@ interface BadgeProps {
 }
 
 const variants: Record<NonNullable<BadgeProps["variant"]>, string> = {
-  mint: "bg-mint-100 text-mint-700",
-  ink: "bg-ink-100 text-ink-700",
-  cloud: "bg-cloud-100 text-ink-700"
+  mint: "bg-rose-100 text-rose-700",
+  ink: "bg-charcoal-100 text-charcoal-700",
+  cloud: "bg-beige-100 text-charcoal-700"
 };
 
 export function Badge({ children, variant = "cloud" }: BadgeProps) {
   return (
-    <span className={cn("rounded-full px-3 py-1 text-xs font-semibold", variants[variant])}>{children}</span>
+    <span className={cn("rounded-full px-3 py-1 text-xs font-semibold tracking-[0.08em] uppercase", variants[variant])}>
+      {children}
+    </span>
   );
 }

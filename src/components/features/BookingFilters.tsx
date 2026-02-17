@@ -37,8 +37,6 @@ export function BookingFilters({
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
-  const [isAutoRefreshing, setIsAutoRefreshing] = useState(false);
-
   const defaultService = useMemo(() => initialServiceId || services[0]?.id || "", [initialServiceId, services]);
   const defaultStaff = useMemo(() => initialStaffId || staff[0]?.id || "", [initialStaffId, staff]);
 
@@ -70,10 +68,8 @@ export function BookingFilters({
 
   useEffect(() => {
     if (!isDirty) {
-      setIsAutoRefreshing(false);
       return;
     }
-    setIsAutoRefreshing(true);
     const timer = setTimeout(() => {
       applyFilters();
     }, 250);
@@ -120,7 +116,7 @@ export function BookingFilters({
         <Button
           type="button"
           variant="primary"
-          className="min-w-[180px] bg-emerald-600 text-white hover:bg-emerald-700"
+          className="min-w-[180px]"
           onClick={applyFilters}
           disabled={isPending}
         >
@@ -128,9 +124,9 @@ export function BookingFilters({
         </Button>
         {isPending ? (
           <div className="flex items-center gap-2 text-xs text-ink-600">
-            <span className="h-1.5 w-8 rounded-full bg-emerald-200 animate-pulse" />
-            <span className="h-1.5 w-5 rounded-full bg-emerald-300 animate-pulse" />
-            <span className="h-1.5 w-12 rounded-full bg-emerald-200 animate-pulse" />
+            <span className="h-1.5 w-8 rounded-full bg-rose-100 animate-pulse" />
+            <span className="h-1.5 w-5 rounded-full bg-rose-100 animate-pulse" />
+            <span className="h-1.5 w-12 rounded-full bg-rose-100 animate-pulse" />
           </div>
         ) : null}
       </div>
