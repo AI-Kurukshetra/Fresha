@@ -2,7 +2,7 @@
 
 import { z } from "zod";
 import { redirect } from "next/navigation";
-import { createSupabaseServerClient } from "@/infrastructure/database/supabaseServer";
+import { createSupabaseServerActionClient } from "@/infrastructure/database/supabaseServer";
 import type { ActionState } from "@/components/features/ActionForm";
 import { logger } from "@/lib/logger";
 
@@ -30,7 +30,7 @@ export const signUp = async (prevState: ActionState, formData: FormData): Promis
     return { status: "error", message: "Please provide valid signup details." };
   }
 
-  const supabase = await createSupabaseServerClient();
+  const supabase = await createSupabaseServerActionClient();
   const { data, error } = await supabase.auth.signUp({
     email: parsed.data.email,
     password: parsed.data.password,
@@ -62,7 +62,7 @@ export const signIn = async (prevState: ActionState, formData: FormData): Promis
     return { status: "error", message: "Enter a valid email and password." };
   }
 
-  const supabase = await createSupabaseServerClient();
+  const supabase = await createSupabaseServerActionClient();
   const { error } = await supabase.auth.signInWithPassword({
     email: parsed.data.email,
     password: parsed.data.password
@@ -77,7 +77,7 @@ export const signIn = async (prevState: ActionState, formData: FormData): Promis
 };
 
 export const signOut = async (): Promise<void> => {
-  const supabase = await createSupabaseServerClient();
+  const supabase = await createSupabaseServerActionClient();
   await supabase.auth.signOut();
   redirect("/");
 };
